@@ -15,6 +15,13 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         });
     }
+// The code below makes it possible to press the Enter key instead of clicking on the Submit button
+    document.getElementById("answer-box").addEventListener("keydown", function(event) {
+        if (event.key === "Enter") {
+            checkAnswer();
+        }
+    } ); 
+
     runGame("addition");
 
 });
@@ -24,7 +31,11 @@ document.addEventListener("DOMContentLoaded", function() {
  * and after the user's answer has been processed
  */
 function runGame(gameType) {
+// By declaring an empty value, this clears up the answer-box and places 
+// the cursor inside everytime the function is called.
 
+    document.getElementById("answer-box").value = ""; 
+    document.getElementById("answer-box").focus(); 
     // Creates two random numbers between 1 and 25
     let num1 = Math.floor(Math.random() * 25) + 1;
     let num2 = Math.floor(Math.random() * 25) + 1;
